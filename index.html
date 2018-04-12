@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+
+        </div>
+    </header>
+    <section class="section js-estimate">
+        <div class="container">
+            <ul class="input__list">
+                <li class="input__wrapper"><input type="number" class="input js-corridor" min="1" placeholder="Площадь коридора (м*2)"></li>
+                <li class="input__wrapper"><input type="number" class="input js-office" min="1" placeholder="Площадь офисных помещений (м*2)"></li>
+                <li class="input__wrapper"><input type="number" class="input js-service" min="1" placeholder="Площадь служебных помещений (м*2)"></li>
+                <li class="input__wrapper"><input type="number" class="input js-floors js-control" min="1" placeholder="Количество этажей" data-control="js-floor"></li>
+                <li class="input__wrapper"><input type="checkbox" class="input js-elevator js-floor" placeholder="Есть лифт" disabled></li>
+                <li class="input__wrapper"><input type="number" class="input js-stairway js-floor" min="1" placeholder="Площадь лестничного пролёта" disabled></li>
+            </ul>
+            <button class="js-btn">Рассчитать</button>
+            <div class="result">
+                <ul class="result__list">
+                    <li class="result__item">
+                        <p>Экономия электроэнергии в натуральном эквиваленте за год, кВт×ч:</p>
+                        <p>Эн = (Рлн – Рлл) × n × Nч × Kc = <span class="js-lamp-full"></span> кВт×ч.</p>
+                        <p>Экономия электроэнергии в денежном эквиваленте за год, руб.:</p>
+                        <p>Эд = Эн × Тэ/э = <span class="js-lamp-save"></span> руб.</p>
+                        <p>Затраты на приобретение и установку электроосветительных приборов:</p>
+                        <p>З = (Зо + Зм) × m = <span class="js-lamp-cost"></span> руб. ,</p>
+                        <p>Срок окупаемости мероприятия, лет:</p>
+                        <p>Со = З/Эд = <span class="js-lamp-time"></span></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
