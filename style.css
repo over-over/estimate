@@ -4,3 +4,28 @@
 .result__final-text{
     display: none;
 }
+.input__label{
+    display: block;
+}
+@media only screen and (max-width: 767px) {
+    .input__heading{
+        display: block;
+    }
+    .input__label{
+        margin-bottom: 1.25rem;
+    }
+    .input__list{
+        margin-bottom: 2.5rem;
+    }
+    .title{
+        hyphens: auto;
+        word-break: break-word;
+        word-wrap: break-word;
+    }
+    .result__list{
+        padding-left: 15px;
+    }
+    .result__item h3{
+        font-size: 1.4rem;
+    }
+}
