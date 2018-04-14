@@ -5,29 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
     <header>
         <div class="container">
-
+            <h1>Энергосберегающие решения для офисных помещений.</h1>
+            <hr>
         </div>
     </header>
     <section class="section js-estimate">
         <div class="container">
-            <ul class="input__list">
-                <li class="input__wrapper"><input type="number" class="input js-corridor" min="1" placeholder="Площадь коридора (м*2)"></li>
-                <li class="input__wrapper"><input type="number" class="input js-office" min="1" placeholder="Площадь офисных помещений (м*2)"></li>
-                <li class="input__wrapper"><input type="number" class="input js-service" min="1" placeholder="Площадь служебных помещений (м*2)"></li>
-                <li class="input__wrapper"><input type="number" class="input js-floors js-control" min="1" placeholder="Количество этажей" data-control="js-floor"></li>
-                <li class="input__wrapper"><input type="checkbox" class="input js-elevator js-floor" placeholder="Есть лифт" disabled></li>
-                <li class="input__wrapper"><input type="number" class="input js-stairway js-floor" min="1" placeholder="Площадь лестничного пролёта" disabled></li>
-            </ul>
-            <button class="js-btn">Рассчитать</button>
+            <form class="input__form js-form mb-5">
+                <h2>Текущие показания</h2>
+                <ul class="input__list">
+                   <li class="input__wrapper">
+                        <label for="lamp" class="input__label">
+                            <span class="input__heading">Мощность текущих ламп</span>
+                            <input type="number" class="input js-lamp" id="lamp" name="lamp" min="1" required>
+                        </label>
+                    </li>
+                    <li class="input__wrapper">
+                        <label for="corridor" class="input__label">
+                            <span class="input__heading">Площадь коридора (м*2)</span>
+                            <input type="number" class="input js-corridor" id="corridor" name="corridor" min="1" required>
+                        </label>
+                    </li>
+                    <li class="input__wrapper">
+                        <label for="office" class="input__label">
+                            <span class="input__heading">Площадь офисных помещений (м*2)</span>
+                            <input type="number" class="input js-office" id="office" name="office" min="1" required>
+                        </label>
+                    </li>
+                    <li class="input__wrapper">
+                        <label for="service" class="input__label">
+                            <span class="input__heading">Площадь служебных помещений (м*2)</span>
+                            <input type="number" class="input js-service" id="service" name="service" min="1" required>
+                        </label>
+                    </li>
+                    <li class="input__wrapper">
+                        <label for="floors" class="input__label">
+                            <span class="input__heading">Количество этажей</span>
+                            <input type="number" class="input js-floors js-control" id="floors" name="floors" min="1" data-control="js-floor" required>
+                        </label>
+                    </li>
+                    <li class="input__wrapper">
+                        <label for="elevator" class="input__label">
+                            <span class="input__heading">Есть лифт</span>
+                            <input type="checkbox" class="input js-elevator js-floor" id="elevator" name="elevator" disabled>
+                        </label>
+                    </li>
+                    <li class="input__wrapper">
+                        <label for="stairway" class="input__label">
+                            <span class="input__heading">Площадь лестничного пролёта</span>
+                            <input type="number" class="input js-stairway js-floor" id="stairway" name="stairway" min="1" disabled required>
+                        </label>
+                    </li>
+                </ul>
+                <button type="submit" class="btn js-btn">Рассчитать</button> 
+            </form>
             <div class="result">
                 <ul class="result__list">
-                    <li class="result__item">
-                        <p>Экономия электроэнергии в натуральном эквиваленте за год, кВт×ч:</p>
-                        <p>Эн = (Рлн – Рлл) × n × Nч × Kc = <span class="js-lamp-full"></span> кВт×ч.</p>
+                    <li class="result__item js-lamp-results">
+                        <h3>Замена существующих ламп на люминесцентные мощностью 16 Вт</h3>
+                        <p>Экономия электроэнергии в натуральном эквиваленте за год, Вт×ч:</p>
+                        <p>Эн = (Рлн – Рлл) × n × Nч × Kc = <span class="js-lamp-full"></span>кВт×ч.</p>
                         <p>Экономия электроэнергии в денежном эквиваленте за год, руб.:</p>
                         <p>Эд = Эн × Тэ/э = <span class="js-lamp-save"></span> руб.</p>
                         <p>Затраты на приобретение и установку электроосветительных приборов:</p>
@@ -35,7 +78,46 @@
                         <p>Срок окупаемости мероприятия, лет:</p>
                         <p>Со = З/Эд = <span class="js-lamp-time"></span></p>
                     </li>
+                    <li class="result__item js-detector-results">
+                        <h3>Установление датчиков движения для автоматического управления освещением</h3>
+                        <p>Потребление электроэнергии лампами в помещении за год без датчика движения, Вт·ч:</p>
+                        <p>Э1 = <span class="js-detector-without"></span> Вт·ч</p>
+                        <p>Потребление электроэнергии лампами в помещении за год с датчиком движения, Вт·ч:</p>
+                        <p>Э2 = <span class="js-detector-with"></span> Вт·ч</p>
+                        <p>Количество электроэнергии, сэкономленной за год, Вт·ч:</p>
+                        <p>Э = <span class="js-detector-save-amount"></span> Вт·ч</p>
+                        <p>Стоимость электроэнергии, сэкономленной за год руб.:</p>
+                        <p>Э = <span class="js-detector-save-cost"></span> руб.</p>
+                        <p>Окупаемость, лет:</p>
+                        <p>О = З/Э = <span class="js-detector-time"></span></p>
+                    </li>
+                    <li class="result__item js-trigger-results">
+                        <h3>Замена традиционных электромагнитных пускорегулирующих аппаратов электронными пускорегулирующими аппаратами</h3>
+                        <p>Экономия электроэнергии в натуральном эквиваленте за год, Вт×ч:</p>
+                        <p>Эн = Ру.о×( KЭПРА -KПРА)×n×Nч×Kc = <span class="js-trigger-save-amount"></span>. </p>
+                        <p>Экономия электроэнергии в денежном эквиваленте за год, руб.: </p>
+                        <p>Эд = Эн × Тэ/э = <span class="js-trigger-save-cost"></span> руб. </p>
+                        <p>Затраты на закупку и установку ЭПРА: </p>
+                        <p>З = (Зо + Зм) × n × m = <span class="js-trigger-cost"></span> руб. </p>
+                        <p>Срок окупаемости мероприятия, лет:</p>
+                        <p>Со = З/Эд = <span class="js-trigger-time"></span></p>
+                    </li>
+                    <li class="result__item js-elevator-results">
+                        <h3>Внедрение частотно-регулируемого привода в лифтовых установках</h3>
+                        <p>Экономия электроэнергии в натуральном эквиваленте за год, Вт×ч:</p>
+                        <p>Эн = Рл. × Kчрп = <span class="js-elevator-full"></span> Вт×ч.</p>
+                        <p>Экономия электроэнергии в денежном эквиваленте за год, руб.:</p>
+                        <p>Эд = Эн × Тэ/э = <span class="js-elevator-save"></span> руб.</p>
+                        <p>Затраты на приобретение и монтаж установки с ЧРП, руб.:</p>
+                        <p>З = (Зо + Зм) × m = <span class="js-elevator-cost"></span> руб. ,</p>
+                        <p>Срок окупаемости мероприятия, лет:</p>
+                        <p>Со = З/Эд = <span class="js-elevator-time"></span></p>
+                    </li>
                 </ul>
+                <h3 class="result__final-text js-final-text">
+                    Общий срок окупаемости всех мероприятий, лет: <span class="result__final js-final"></span>
+                </h3>
+                
             </div>
         </div>
     </section>
